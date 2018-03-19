@@ -1,0 +1,123 @@
+/*
+题目描述
+有一行电文，已按如下规律译成密码：
+
+A-->Z        a-->z
+
+B-->Y        b-->y
+
+C-->X        c-->x
+
+......          ......
+
+即第一个字母变成第26个字母，第i个字母变成第（26-i+1)个字母，非字母字符不变。要求根据密码译回原文，并输出。
+
+输入
+输入一行密文
+输出
+解密后的原文，单独占一行。
+样例输入
+ZYX123zyx
+样例输出
+ABC123abc
+*/
+#include<stdio.h>
+char change(int b){
+	int i;
+	char c;
+	for(i=0;i<26;i++)//小写
+		a[i]=i+97;
+	for(i=0;i<26;i++)//大写
+		A[i]=i+65;
+
+		if(b<=90){//大写
+			for(i=0;i<26;i++){
+				 c=b==A[i]?A[i]:continue;
+			}
+		}
+		if(b>=97){//小写
+			for(i=0;i<26;i++){
+				 c=b==a[i]?a[i]:continue;
+			}
+		}
+		return c;
+}
+char replace(char a){
+	int b=a;	//得到字母a的ASCII
+	char c=change(b);
+	return (c);	
+}
+int main(){
+	char a[100];
+	int k=0;
+	for(int i=0;i<100;i++){
+		a[i]=getchar();
+		a[i]=replace(a[i]);
+		if(getchar()==''){
+			k=i;
+			break;
+		}
+	}
+	return 0;
+}
+
+int main(){
+	char a[26];
+	for(int i=0;i<26;i++)
+		a[i]=i+65;
+	for(int j=0;j<26;j++)
+		printf("%c",a[j]);
+	return 0;
+}
+
+
+
+
+#include<stdio.h>
+#include<string.h>
+char change(int b){
+	int i;
+	char c;
+	char a[26],A[26];
+	for(i=0;i<26;i++)//小写
+		a[i]=i+97;
+	for(i=0;i<26;i++)//大写
+		A[i]=i+65;
+
+		if(b<=90){//大写
+			for(i=0;i<26;i++){
+				if(b==A[i]){
+					c=b;
+				}
+			}
+		}
+		if(b>=97){//小写
+			for(i=0;i<26;i++){
+				 if(b==a[i]){
+					c=b;
+				}
+			}
+		}
+		return c;
+}
+char replace(char a){
+	int b=a;	//得到字母a的ASCII
+	char c=change(b);
+	return (c);	
+}
+int main(){
+	char a[100];
+	gets(a);
+	int k=strlen(a);
+	for(int i=0;i<k;i++){
+		if((getchar()>=65&&getchar()<=90)||(getchar()>=97&&getchar()<=122)){
+			a[i]=getchar();
+		    a[i]=replace(a[i]);	
+		}
+		if((getchar()>=33&&getchar()<90)||(getchar()>122&&getchar()<=126)){
+			a[i]=getchar();
+		}
+	}
+	puts(a);
+	return 0;
+}
